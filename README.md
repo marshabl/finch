@@ -1,9 +1,9 @@
-#Backrunning bot
+# Backrunning bot
 
-##Graph
+## Graph
 Using graphtools (https://graph-tool.skewed.de/), I create a graph of tokens as nodes and LPs as edges by querying two subgraphs (via The Graph - https://thegraph.com/en/). These queries return the current reserves and token addresses needed to build the graph. Once the graph is built, I use a graphtools path finding algorithm to find all cycles of length 2 or 3. I then create a map of pair token address -> pair info (reserves and token address). I then save this map as a JSON file that will be used by my bot. Getting the latest graph should be run on startup of the bot. It only needs to be run on startup (not on-going).
 
-##The bot
+## The bot
 You need to provide a Blocknative API key, an RPC URL and the private key to your EOA
 1. Loads the pairsToTokens.json file that we created above.
 2. Uses the blocknative Golang SDK (https://github.com/marshabl/blocknative-go-sdk) to create a websocket feed to watch a number of different DEX and Aggregator addresses
